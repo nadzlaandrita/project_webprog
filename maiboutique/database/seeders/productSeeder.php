@@ -20,7 +20,7 @@ class productSeeder extends Seeder
                 'name'=>'Black Man Jacket',
                 'size'=>'XL',
                 'price'=>150000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'black_man_jacket.jpg'
             ],
 
@@ -28,7 +28,7 @@ class productSeeder extends Seeder
                 'name'=>'Blue Man Jacket',
                 'size'=>'XL',
                 'price'=>150000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'blue_man_jacket.jpg'
             ],
 
@@ -36,7 +36,7 @@ class productSeeder extends Seeder
                 'name'=>'Brown Man Short',
                 'size'=>'L',
                 'price'=>125000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'brown_man_short.jpg'
             ],
 
@@ -44,7 +44,7 @@ class productSeeder extends Seeder
                 'name'=>'Flower Baby Dress',
                 'size'=>'M',
                 'price'=>100000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'flower_baby_dress.jpg'
             ],
 
@@ -52,7 +52,7 @@ class productSeeder extends Seeder
                 'name'=>'Green Baby Dress',
                 'size'=>'L',
                 'price'=>110000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'green_baby_cloth.jpg'
             ],
 
@@ -60,7 +60,7 @@ class productSeeder extends Seeder
                 'name'=>'Green Woman Blazer',
                 'size'=>'XL',
                 'price'=>250000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'green_blazer.jpg'
             ],
 
@@ -68,7 +68,7 @@ class productSeeder extends Seeder
                 'name'=>'Green Man Shirt',
                 'size'=>'S',
                 'price'=>150000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'green_man_shirt.jpg'
             ],
 
@@ -76,7 +76,7 @@ class productSeeder extends Seeder
                 'name'=>'Green Woman Overall',
                 'size'=>'XL',
                 'price'=>280000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'green_overall.jpg'
             ],
 
@@ -84,7 +84,7 @@ class productSeeder extends Seeder
                 'name'=>'Green Woman Pants',
                 'size'=>'L',
                 'price'=>200000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'green_trouser.jpg'
             ],
 
@@ -92,7 +92,7 @@ class productSeeder extends Seeder
                 'name'=>'Green One Set',
                 'size'=>'XL',
                 'price'=>290000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'green_woman_set.jpg'
             ],
 
@@ -100,7 +100,7 @@ class productSeeder extends Seeder
                 'name'=>'Lime Baby Dress',
                 'size'=>'M',
                 'price'=>120000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'lime_baby_dress.jpg'
             ],
 
@@ -108,17 +108,50 @@ class productSeeder extends Seeder
                 'name'=>'Lime Woman Skirt',
                 'size'=>'M',
                 'price'=>125000,
-                'quantity'=>30,
+                'qty'=>30,
                 'image'=>'lime_skirt.jpg'
             ],
 
             [
-                'name'=>'Black Man Jacket',
+                'name'=>'Green Man Pants',
                 'size'=>'XL',
-                'price'=>150000,
-                'quantity'=>30,
-                'image'=>'black_man_jacket.jpg'
+                'price'=>250000,
+                'qty'=>30,
+                'image'=>'matcha_man_pants.jpg'
+            ],
+
+            [
+                'name'=>'Pink Baby Dress',
+                'size'=>'S',
+                'price'=>200000,
+                'qty'=>30,
+                'image'=>'pink_baby_dress.jpg'
+            ],
+
+            [
+                'name'=>'White Woman Blazer',
+                'size'=>'XL',
+                'price'=>299000,
+                'qty'=>30,
+                'image'=>'white_blazer.jpg'
+            ],
+
+            [
+                'name'=>'White Woman Skirt',
+                'size'=>'M',
+                'price'=>230000,
+                'qty'=>30,
+                'image'=>'white_skirt.jpg'
+            ],
+
+            [
+                'name'=>'Yellow Man Shirt',
+                'size'=>'M',
+                'price'=>180000,
+                'qty'=>30,
+                'image'=>'yellow_man_shirt.jpg'
             ]
+
         ]);
     }
 }
