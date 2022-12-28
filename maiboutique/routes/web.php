@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+# Route untuk Welcome
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcomepage');
+});
+
+# Route untuk Login
+Route::get('/login', function () {
+    return view('login');
+});
+
+# Route untuk Register
+Route::get('/register', function () {
+    return view('register');
 });
