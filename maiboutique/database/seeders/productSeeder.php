@@ -33,11 +33,11 @@ class productSeeder extends Seeder
             ],
 
             [
-                'name'=>'Brown Man Short',
+                'name'=>'Brown Man Shorts',
                 'size'=>'L',
                 'price'=>125000,
                 'qty'=>30,
-                'image'=>'brown_man_short.jpg'
+                'image'=>'brown_man_shorts.jpg'
             ],
 
             [

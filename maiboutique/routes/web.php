@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,10 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+
+# Route untuk home (member)
+Route::get("/home-member", [ProductController::class, "loadProductMember"]);
+Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
+
+Route::get("/home-member", [ProductController::class, "loadDetailProductMember"]);
+Route::get("/home-member", [ProductController::class, "loadDetailProductAdmin"]);
