@@ -21,20 +21,99 @@
         </nav>
     </header>
 
-    <div class="text-center">
-        <img src="{{asset("image/boutique.png")}}" class="mt-3" style="width: 90rem; height: 30rem; filter:brightness(50%)" alt="Responsive image">
-        <div class="centered" style="color: aliceblue; position: absolute; top: 15rem; left: 25rem;">
-            <h1>Welcome To 
-                <a href="/" style="color: aliceblue">MAIBOUTIQUE</a>
-            </h1>
-            <p>Online Boutique that Provides You with Various Clothes to Suit Your Various Activities</p>
-
-            <button type="button" class="btn btn-primary btn-lg">
-                <a href="/register" style="color:aliceblue;">SIGN UP NOW</a>
-            </button>
-        </div>
+    <div class="contain-welcome">
+        <img src="{{asset("image/boutique.png")}}" class="mt-3" alt="Responsive image">
     </div>
-    
-    
+
+    <div class="isi-contain-welcome">
+           <h1>Welcome To <a href="/" >  MAIBOUTIQUE</a></h1>
+           <p>Online Boutique that Provides You with Various Clothes to Suit Your Various Activities</p>
+           <button type="buttosn" class="btn btn-primary btn-lg">
+            <a href="/register">SIGN UP NOW</a>
+        </button>
+    </div>
+
+
+
+<style>
+    .contain-welcome{
+        position: relative;
+    }
+
+    .contain-welcome img{
+        width: 100%;
+        height: 35rem;
+        filter:brightness(50%);
+    }
+
+    .isi-contain-welcome h1{
+        position: absolute;
+        text-align: center;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff
+
+    }
+    .isi-contain-welcome p{
+        position: absolute;
+        text-align: center;
+        top: 46%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff
+
+    }
+    .isi-contain-welcome button{
+        position: absolute;
+        text-align: center;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+
+    }
+    .isi-contain-welcome button a{
+        text-decoration-color: #ffffff
+    }
+
+    .isi-contain-welcome a{
+        text-decoration-color: #1e8bde;
+        color: #ffffff
+    }
+
+    @media only screen and (max-width: 1300px) {
+    .isi-contain-welcome h1{
+        position: absolute;
+        text-align: center;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff
+
+    }
+    .isi-contain-welcome p{
+        position: absolute;
+        text-align: center;
+        top: 43%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff
+
+    }
+    .isi-contain-welcome button{
+        position: absolute;
+        text-align: center;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        text-decoration-color: white;
+
+    }
+
+}
+</style>
+
 </body>
 </html>
