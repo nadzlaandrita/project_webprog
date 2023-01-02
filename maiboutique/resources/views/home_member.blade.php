@@ -6,7 +6,7 @@
     
     <div class="container"> 
 
-        <div class="row justify-content-center"> 
+        <div class="row row-cols-2 row-cols-md-4 g-4 m-2"> 
         
             @foreach ($product_data as $item)
                 
@@ -19,7 +19,7 @@
                             <p class="card-text">Rp. {{$item->price}}</p>
                         </div>
                     </div>
-                    <a href="/" class="btn btn-primary">More Detail</a>
+                    <a href="/home-member/detail-product-{{$item->id}}" class="btn btn-primary">More Detail</a>
                     </div>
                 </div>
             @endforeach
@@ -27,6 +27,39 @@
         
     </div>
 
+    <div class="d-flex justify-content-center">
+        {!! $product_data->links() !!}
+    </div>
+
+    {{-- <div class="p-5 d-flex" style="position: relative">
+        {{-- PAGINATION NAVIGATION --}}
+        {{-- {{$product_data->withQuerySring()->links()}} --}}
+
+    {{-- </div> --}}
+
+    {{-- <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" href="{{$product_data->links()}}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="{{$product_data->links()}}">1</a></li>
+              <li class="page-item"><a class="page-link" href="">2</a></li>
+              <li class="page-item"><a class="page-link" href="">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          
+    </div> --}}
+    
 
 
 @endsection

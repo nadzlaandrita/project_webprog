@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,18 +21,17 @@ Route::get('/', function () {
 });
 
 # Route untuk Login
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [AuthController::class, 'index']);
+Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
 
 # Route untuk Register
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', [AuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
 
 # Route untuk home (member)
 Route::get("/home-member", [ProductController::class, "loadProductMember"]);
-Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
+// Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
 
-Route::get("/home-member", [ProductController::class, "loadDetailProductMember"]);
-Route::get("/home-member", [ProductController::class, "loadDetailProductAdmin"]);
+
+#Route detail product (member)
+Route::get('/home-member/detail-product-{id}', [ProductController::class, "loadDetailProductMember"]);
