@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -17,16 +18,26 @@ class AuthController extends Controller
       
     public function loginMember(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
+        $email = $request->email;
+        $password = $request->password;
 
-        if (Auth::attempt([$credentials])){
-            return redirect('home-member');
+        if($request->remember){
+            Cookie::queue('email_cookie', $email);
+            Cookie::queue('password_cookie', $password, 2);
         }
 
-        return 'fail';
+        $credentials = [
+            'email' => $email,
+            'password' => $password
+        ];
+
+        if (Auth::attempt([$credentials])){
+
+            $request->session()->put('credentials_session', $credentials);
+            return redirect('/home-member');
+        }
+
+        return redirect('/login');
 
     }
 
@@ -35,53 +46,52 @@ class AuthController extends Controller
         return redirect('welcomepage');
     }
 
-    public function registration()
+    public function registerPage()
     {
         return view('register');
     }
       
-    public function customRegistration(Request $request)
+    public function registerMember(Request $request)
     {  
-        $request->validate([
+        $email = $request->email;
+        $password = $request->password;
+        $username = $request->username;
+        $phone_number = $request->phone_number;
+        $address = $request->address;
+
+        $this->validate($request, [
             'username' => 'required|min:5|max:20',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5|max:20',
-            'phoneNumber' => 'required|min:10|max:13',
+            'phone_number' => 'required|min:10|max:13',
             'address' => 'required|min:5'
 
         ]);
+
+        User::insert([
+
+            'email' => $email,
+            "password" => $password,
+            'username' => $username,
+            'phone_number' => $phone_number,
+            'address' => $address
+        ]);
            
-        $data = $request->all();
-        $check = $this->create($data);
-         
-        return redirect("home_member")->withSuccess('You have signed-in');
+        $credentials = [
+
+            "email" => $email,
+            "password" => $password
+        ];
+
+        // Login
+        if (Auth::attempt($credentials)) {
+
+            $request->session()->put('credentials_session', $credentials);
+            return redirect("/home-member");
+        }
+
+        return "fail";
     }
 
-    public function create(array $data)
-    {
-      return User::create([
-        'username' => $data['username'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-        'phoneNumber' => $data['phone_number'],
-        'address' => $data['address']
-      ]);
-    }    
-    
-    public function dashboard()
-    {
-        if(Auth::check()){
-            return view('home_member');
-        }
-  
-        return redirect("login")->withSuccess('You are not allowed to access');
-    }
-    
-    public function signOut() {
-        Session::flush();
-        Auth::logout();
-  
-        return Redirect('login');
-    }
 }
 

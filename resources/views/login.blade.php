@@ -19,12 +19,13 @@
             <div class="card-body">
                 <h1 class="text-center">Sign In</h1>
 
-                <form method="POST" action="/login">
-                    @csrf
+                <form method="POST" action={{ url('/login')}} enctype="multipart/form-data">
+                    
+                    {{ csrf_field() }}
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name ="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
+                        <input type="email" name ="email" class="form-control" id="email" placeholder="Enter email" value="{{ Cookie::get('email_cookie') != null ? Cookie::get('email_cookie') : '' }} " required autofocus>
                     </div>
 
                     <div class="form-group">
@@ -33,7 +34,7 @@
                     </div>
 
                     <div class="form-group form-check">
-                        <input type="checkbox" name="remember" class="form-check-input" id="remember">
+                        <input type="checkbox" name="remember" class="form-check-input" id="remember" value="{{ Cookie::get('password_cookie') != null ? Cookie::get('password_cookie') : '' }}">
                         <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                     </div>
 

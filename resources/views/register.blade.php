@@ -19,47 +19,59 @@
         <div class="card w-50" style="background-color:aliceblue">
             <div class="card-body">
                 <h1 class="text-center">Sign Up</h1>
-                <form action="{{route('register.custom')}}" method="POST">
-                    @csrf
+                <form action={{url('/register')}} method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
 
                     <div class="form-group">
                         <label for="exampleInputUsername">Username</label>
-                        <input type="username" class="form-control" id="exampleInputUsername" aria-describedby="emailHelp" placeholder="(5-20 letters)" required autofocus>
-                        @if ($errors->has('username'))
-                            <span class="text-danger">{{$errors->first('username')}}</span>
-                        @endif
+                        <input type="username" class="form-control" id="email" aria-describedby="emailHelp" placeholder="(5-20 letters)" required autofocus>
+                        
+                        @error('username')
+                            <div class="alert alert-dismissible alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
-                        @if ($errors->has('email'))
-                            <span class="text-danger">{{$errors->first('email')}}</span>
-                        @endif
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
+                        @error('email')
+                            <div class="alert alert-dismissible alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-                        @if ($errors->has('password'))
-                            <span class="text-danger">{{$errors->first('password')}}</span>
-                        @endif
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        @error('password')
+                            <div class="alert alert-dismissible alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputPhoneNumber">Phone Number</label>
-                        <input type="phoneNumber" class="form-control" id="exampleInputPhoneNumber" placeholder="(10-13 numbers)" required>
-                        @if ($errors->has('phoneNumber'))
-                            <span class="text-danger">{{$errors->first('phoneNumber')}}</span>
-                        @endif
+                        <input type="phone_number" class="form-control" id="phone_number" placeholder="(10-13 numbers)" required>
+                        @error('phone_number')
+                            <div class="alert alert-dismissible alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputAddress">Address</label>
-                        <input type="address" class="form-control" id="exampleInputAddress" placeholder="(min 5 letters)" required>
-                        @if ($errors->has('address'))
-                            <span class="text-danger">{{$errors->first('address')}}</span>
-                        @endif
+                        <input type="address" class="form-control" id="address" placeholder="(min 5 letters)" required>
+                        @error('address')
+                            <div class="alert alert-dismissible alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="text-center mt-2">

@@ -25,8 +25,8 @@ Route::get('/login', [AuthController::class, 'loginPage']);
 Route::post('/login', [AuthController::class, 'loginMember']);
 
 # Route untuk Register
-Route::get('/register', [AuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('/register', [AuthController::class, 'registerPage']);
+Route::post('/register', [AuthController::class, 'registerMember']);
 
 # Route untuk Sign Out
 Route::get('/logout', [AuthController::class, 'logout']);
@@ -38,3 +38,14 @@ Route::get("/home-member", [ProductController::class, "loadProductMember"]);
 
 #Route detail product (member)
 Route::get('/home-member/detail-product-{id}', [ProductController::class, "loadDetailProductMember"]);
+
+# Route Profile Member
+Route::get('/profile-member', function () {
+    return view('profile_member');
+});
+
+# Route Edit Profile Member
+Route::get('/update-profile', function () {
+    return view('update_profile');
+});
+
