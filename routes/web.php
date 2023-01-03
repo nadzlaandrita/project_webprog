@@ -21,12 +21,15 @@ Route::get('/', function () {
 });
 
 # Route untuk Login
-Route::get('/login', [AuthController::class, 'index']);
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
+Route::get('/login', [AuthController::class, 'loginPage']);
+Route::post('/login', [AuthController::class, 'loginMember']);
 
 # Route untuk Register
 Route::get('/register', [AuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
+
+# Route untuk Sign Out
+Route::get('/logout', [AuthController::class, 'logout']);
 
 # Route untuk home (member)
 Route::get("/home-member", [ProductController::class, "loadProductMember"]);

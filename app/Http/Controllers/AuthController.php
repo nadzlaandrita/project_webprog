@@ -10,25 +10,29 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function loginPage()
     {
         return view('login');
     }  
       
-    public function customLogin(Request $request)
+    public function loginMember(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required|min:5|max:20',
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
         ]);
-   
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('home_member')
-                        ->withSuccess('Signed in');
+
+        if (Auth::attempt([$credentials])){
+            return redirect('home-member');
         }
-  
-        return redirect("login")->withSuccess('Login details are not valid');
+
+        return 'fail';
+
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('welcomepage');
     }
 
     public function registration()
