@@ -33,19 +33,38 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 # Route untuk home (member)
 Route::get("/home-member", [ProductController::class, "loadProductMember"]);
-// Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
+Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
 
 
 #Route detail product (member)
 Route::get('/home-member/detail-product-{id}', [ProductController::class, "loadDetailProductMember"]);
+Route::get('/home-admin/detail-product-{id}', [ProductController::class, "loadDetailProductAdmin"]);
 
 # Route Profile Member
 Route::get('/profile-member', function () {
-    return view('profile_member');
+    return view('member.profile_member');
+});
+
+# Route Profile Admin
+Route::get('/profile-admin', function () {
+    return view('admin.profile_admin');
 });
 
 # Route Edit Profile Member
 Route::get('/update-profile', function () {
-    return view('update_profile');
+    return view('member.update_profile');
 });
 
+# Route Edit Password Member
+Route::get('/update-password-member', function () {
+    return view('member.update_password_member');
+});
+
+# Route Edit Password Admin
+Route::get('/update-password-admin', function () {
+    return view('admin.update_password_admin');
+});
+
+# Route Edit Password Admin
+Route::get('/add-item', [ProductController::class, "addItemPage"]);
+Route::post('/add-item', [ProductController::class, "storeImage"])->name('image.store');

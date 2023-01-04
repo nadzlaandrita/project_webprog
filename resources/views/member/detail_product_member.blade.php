@@ -1,4 +1,4 @@
-@extends('navbar_member')
+@extends('member.navbar_member')
 
 @section('title', 'detail_product_member')
 
@@ -33,9 +33,7 @@
                     Add To cart
                 </button>
                 </div>
-                <button type="button" class="btn btn-danger">
-                    <a href="/home-member">Back</a>
-                </button>
+                <a type="button" class="btn btn-danger" href="/home-member">Back</a>
             </form>
             </div>
         </div>

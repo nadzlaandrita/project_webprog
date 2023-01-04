@@ -43,7 +43,7 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect('welcomepage');
+        return redirect('/welcomepage');
     }
 
     public function registerPage()

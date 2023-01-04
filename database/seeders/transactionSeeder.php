@@ -22,20 +22,6 @@ class transactionSeeder extends Seeder
                 'qty' => 1,
                 'total_price' => 125000,
                 'transaction_date' => Carbon::create('2022', '12', '1')
-            ],
-
-            [
-                'product_id' => 5,
-                'qty' => 2,
-                'total_price' => 220000,
-                'transaction_date' => Carbon::create('2022', '12', '1')
-            ],
-
-            [
-                'product_id' => 1,
-                'qty' => 5,
-                'total_price' => 750000,
-                'transaction_date' => Carbon::create('2022', '12', '1')
             ]
 
             
