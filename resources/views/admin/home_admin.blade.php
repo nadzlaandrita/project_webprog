@@ -19,7 +19,10 @@
                             <p class="card-text">Rp. {{$item->price}}</p>
                         </div>
                     </div>
-                    <a href="/home-admin/detail-product-{{$item->id}}" class="btn btn-primary">More Detail</a>
+                    
+                    <div>
+                        <a href="/home-admin/detail-product-{{$item->id}}" class="btn btn-primary">More Detail</a>
+                    </div>
                     </div>
                 </div>
             @endforeach

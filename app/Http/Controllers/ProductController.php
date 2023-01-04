@@ -61,7 +61,7 @@ class ProductController extends Controller
     public function addItemPage(){
         return view('admin.add_item');
     }
-    
+
     // Store Image
     public function storeImage(Request $request)
     {
