@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+@extends('member.navbar_member')
 
-    <title>
-        @yield('register')
-    </title>
+@section('title', 'update_profile')
 
-</head>
+@section('content')
 
-<body>
-        
     <div class="mt-5" style="justify-content:center; align-items:center; display:flex;">
         <div class="card w-50" style="background-color:aliceblue">
             <div class="card-body">
-                <h1 class="text-center">Sign Up</h1>
-                <form action={{url('/register')}} method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                <h1 class="text-center">Update Profile</h1>
+
+                <form>
 
                     <div class="form-group">
                         <label for="exampleInputUsername">Username</label>
@@ -38,16 +27,6 @@
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
                         @error('email')
-                            <div class="alert alert-dismissible alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" required>
-                        @error('password')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
                             </div>
@@ -75,20 +54,15 @@
                     </div>
 
                     <div class="text-center mt-2">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <p>Alredy Register?
-                            <a href="/login">Sign In Here</a>
-                        </p>
+                        <button type="submit" class="btn btn-success form-control">Save Update</button>
                     </div>
 
+                    <div>
+                        <a type="button" class="mt-2 btn btn-outline-danger" href="/profile-member">Back</a>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    
 
-    
-
-
-</body>
-</html>
+@endsection

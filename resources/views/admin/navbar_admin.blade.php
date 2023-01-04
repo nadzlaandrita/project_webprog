@@ -10,29 +10,28 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
     <title>
-        @yield('navbar_member')
+        @yield('navbar_admin')
     </title>
 
 </head>
 <body>
 
   <nav class="px-3 navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">MAIBOUTIQUE</a>
+    <a class="navbar-brand" href="/home-admin">MAIBOUTIQUE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">Home</a>
+        <a class="nav-item nav-link" href="/home-admin">Home</a>
         <a class="nav-item nav-link" href="#">Search</a>
-        <a class="nav-item nav-link" href="#">Cart</a>
-        <a class="nav-item nav-link" href="#">History</a>
-        <a class="nav-item nav-link" href="#">Profile</a>
+        <a class="nav-item nav-link" href="/profile-admin">Profile</a>
       </div>
     </div>
 
     <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Sign Out</button>
+      <a class="btn btn-outline-success" type="button" href="/add-item">Add Item</a>
+      <button class="btn btn-outline-success" type="button">Sign Out</button>
     </form>
 
   </nav>
