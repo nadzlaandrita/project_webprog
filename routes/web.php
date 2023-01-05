@@ -32,7 +32,7 @@ Route::post('/register', [AuthController::class, 'registerMember']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 # Route untuk home (member)
-Route::get("/home-member", [ProductController::class, "loadProductMember"]);
+Route::get("/home-member", [ProductController::class, 'loadProductMember']);
 Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
 
 

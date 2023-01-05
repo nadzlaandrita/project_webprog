@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -22,7 +21,7 @@ class AuthController extends Controller
         $password = $request->password;
 
         if($request->remember){
-            Cookie::queue('email_cookie', $email);
+            Cookie::queue('email_cookie', $email, 2);
             Cookie::queue('password_cookie', $password, 2);
         }
 
@@ -31,19 +30,24 @@ class AuthController extends Controller
             'password' => $password
         ];
 
-        if (Auth::attempt([$credentials])){
+        if (Auth::attempt($credentials, true)){
+            Session::put('mySession', $credentials);
 
-            $request->session()->put('credentials_session', $credentials);
-            return redirect('/home-member');
+            if (Auth::user()->role == 'admin') {
+                return redirect()->route('admin.home_admin');
+            }else{
+                return redirect()->route('member.home_member');
+            }
+            
         }
 
-        return redirect('/login');
+        return redirect('/log');
 
     }
 
     public function logout(){
         Auth::logout();
-        return redirect('/welcomepage');
+        return redirect('/');
     }
 
     public function registerPage()
@@ -71,7 +75,7 @@ class AuthController extends Controller
         User::insert([
 
             'email' => $email,
-            "password" => $password,
+            "password" => bcrypt($password),
             'username' => $username,
             'phone_number' => $phone_number,
             'address' => $address
@@ -84,9 +88,9 @@ class AuthController extends Controller
         ];
 
         // Login
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
 
-            $request->session()->put('credentials_session', $credentials);
+            $request->session()->put('mySession', $credentials);
             return redirect("/home-member");
         }
 

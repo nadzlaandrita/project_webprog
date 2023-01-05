@@ -19,9 +19,8 @@
             <div class="card-body">
                 <h1 class="text-center">Sign In</h1>
 
-                <form method="POST" action={{ url('/login')}} enctype="multipart/form-data">
-                    
-                    {{ csrf_field() }}
+                <form method="POST" action={{ url('/login')}}>
+                    @csrf
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
