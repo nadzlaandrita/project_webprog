@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 # Route untuk Welcome
-Route::get('/', function () {
+Route::get('/', function (){
     return view('welcomepage');
 });
 
@@ -68,3 +69,20 @@ Route::get('/update-password-admin', function () {
 # Route Edit Password Admin
 Route::get('/add-item', [ProductController::class, "addItemPage"]);
 Route::post('/add-item', [ProductController::class, "storeImage"])->name('image.store');
+
+#routes view-cart member
+Route::get('/view-cart', function () {
+    return view('member.view_cart');
+});
+
+#routes untuk transaction-history
+Route::get("/transactions-history", [TransactionController::class, "loadTransactions"]);
+
+#route
+Route::get('/edit-cart-member', function () {
+    return view('member.edit_cart_member');
+});
+
+Route::get('/edit-cart-admin', function () {
+    return view('admin.edit_cart_admin');
+});
