@@ -31,7 +31,7 @@
 
     <form class="form-inline">
       <a class="btn btn-outline-success" type="button" href="/add-item">Add Item</a>
-      <button class="btn btn-outline-success" type="button">Sign Out</button>
+      <a class="btn btn-outline-success" type="button" href="/logout">Sign Out</a>
     </form>
 
   </nav>

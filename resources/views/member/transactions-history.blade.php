@@ -4,19 +4,19 @@
 
 @section('content')
 
-<div class="title-halaman d-flex justify-content-center">
+  <div class="title-halaman d-flex justify-content-center">
     <h1>Check What You've Bought</h1>
   </div>
-  <br>
+    <br>
 
   @foreach ($transactions as $data)
-  <div class="isi-transaksi bg-light ">
-    <h5>{{$data->transaction_date}}</h5>
-    <ul>
-      <li>{{$data->qty}} pcs //kurang productname </li>
-    </ul>
-    <h5>Rp {{$data->total_price }}</h5>
-  </div>
+    <div class="isi-transaksi bg-light ">
+      <h5>{{$data->transaction_date}}</h5>
+      <ul>
+        <li> {{$data->qty}} {{$data->name}} </li>
+      </ul>
+      <h5>Rp {{$data->total_price }}</h5>
+    </div>
   @endforeach
 
 

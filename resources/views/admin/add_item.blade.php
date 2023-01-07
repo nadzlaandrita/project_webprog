@@ -17,7 +17,7 @@
                 <img src="{{ asset('image/'.Session::get('image')) }}" />
 
             @endif
-                <form method="POST" action="{{ route('image.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ url('/add-item') }}" enctype="multipart/form-data">
                     @csrf
                     
                     <input type="file" class="form-control" name="image" />
@@ -25,8 +25,8 @@
                     <button type="submit" class="btn btn-sm">Upload</button>
 
                     <div class="form-group">
-                        <label for="old_password">Clothes Name</label>
-                        <input type="name" class="form-control" id="name" aria-describedby="name" placeholder="(5-20 letters)" required autofocus>
+                        <label for="inputName">Clothes Name</label>
+                        <input type="inputName" name="name"class="form-control" id="inputName" aria-describedby="inputName" placeholder="(5-20 letters)" required autofocus>
                         
                         @error('name')
                             <div class="alert alert-dismissible alert-danger">
@@ -37,8 +37,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="size">Clothes Desc</label>
-                        <input type="size" class="form-control" id="size" aria-describedby="size" placeholder="(5-20 letters)" required autofocus>
+                        <label for="inputSize">Clothes Desc</label>
+                        <input type="inputSize" name="size" class="form-control" id="inputSize" aria-describedby="inputSize" placeholder="(5-20 letters)" required autofocus>
                         @error('size')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -47,8 +47,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="price">Clothes Price</label>
-                        <input type="price" class="form-control" id="price" aria-describedby="price" placeholder=">=1000" required autofocus>
+                        <label for="inputPrice">Clothes Price</label>
+                        <input type="inputPrice" name="price" class="form-control" id="inputPrice" aria-describedby="inputPrice" placeholder=">=1000" required autofocus>
                         @error('price')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -57,9 +57,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="quantity">Clothes Stock</label>
-                        <input type="quantity" class="form-control" id="quantity" aria-describedby="quantity" placeholder=">=1" required autofocus>
-                        @error('quantity')
+                        <label for="inputStock">Clothes Stock</label>
+                        <input type="inputStock" name="qty" class="form-control" id="inputStock" aria-describedby="inputStock" placeholder=">=1" required autofocus>
+                        @error('qty')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
                             </div>

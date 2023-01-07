@@ -86,5 +86,21 @@ class ProductController extends Controller
         return back()->with('success', 'Image uploaded Successfully!')
         ->with('image', $imageName);
     }
+
+    public function insert(Request $request)
+    {
+        $image_path = $request->file('image')->store('image', 'public');
+
+        //CREATE NEW PRODUCT
+        Product::create([
+            'name' => $request->inputName,
+            'size' => $request->inputSize,
+            'price' => $request->inputPrice,
+            'qty' => $request->inputStock,
+            'image' => $request->image_path
+        ]);
+
+        return redirect('/home-admin');
+    }
     
 }

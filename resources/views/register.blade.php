@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputUsername">Username</label>
-                        <input type="username" class="form-control" id="email" aria-describedby="emailHelp" placeholder="(5-20 letters)" required autofocus>
+                        <input type="username" name="username" class="form-control" id="email" aria-describedby="emailHelp" placeholder="(5-20 letters)" required autofocus>
                         
                         @error('username')
                             <div class="alert alert-dismissible alert-danger">
@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
                         @error('email')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
                         @error('password')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -56,7 +56,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPhoneNumber">Phone Number</label>
-                        <input type="phone_number" class="form-control" id="phone_number" placeholder="(10-13 numbers)" required>
+                        <input type="phone_number" name="phone_number" class="form-control" id="phone_number" placeholder="(10-13 numbers)" required>
                         @error('phone_number')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -66,7 +66,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputAddress">Address</label>
-                        <input type="address" class="form-control" id="address" placeholder="(min 5 letters)" required>
+                        <input type="address" name="address" class="form-control" id="address" placeholder="(min 5 letters)" required>
                         @error('address')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}

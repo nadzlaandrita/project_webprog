@@ -25,14 +25,14 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/home-member">Home</a>
         <a class="nav-item nav-link" href="#">Search</a>
-        <a class="nav-item nav-link" href="#">Cart</a>
-        <a class="nav-item nav-link" href="#">History</a>
+        <a class="nav-item nav-link" href="/cart">Cart</a>
+        <a class="nav-item nav-link" href="/history">History</a>
         <a class="nav-item nav-link" href="/profile-member">Profile</a>
       </div>
     </div>
 
     <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Sign Out</button>
+        <a class="btn btn-outline-success" type="button" href="/logout">Sign Out</a>
     </form>
 
   </nav>

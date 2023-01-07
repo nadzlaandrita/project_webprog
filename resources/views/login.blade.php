@@ -23,13 +23,13 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name ="email" class="form-control" id="email" placeholder="Enter email" value="{{ Cookie::get('email_cookie') != null ? Cookie::get('email_cookie') : '' }} " required autofocus>
+                        <label for="email">Email address</label>
+                        <input type="email" name ="email" class="form-control" id="email" placeholder="Enter email" value="{{ Cookie::get('email_cookie') != null ? Cookie::get('email_cookie') : '' }} " required>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" name="password "class="form-control" id="password" placeholder="Password" required autofocus>
+                        <label for="password">Password</label>
+                        <input type="password" name="password"class="form-control" id="password" placeholder="Password" required>
                     </div>
 
                     <div class="form-group form-check">
@@ -39,7 +39,7 @@
 
                     <div class="text-center">
 
-                        <button type="submit" value="login" class="btn btn-primary">Sign In</button>
+                        <input type="submit" value="Sign In" class="btn btn-primary">
                         <p>Not Registered yet?
                             <a href="/register">Sign Up Here</a>
                         </p>

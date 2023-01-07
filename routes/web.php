@@ -23,7 +23,7 @@ Route::get('/', function (){
 
 # Route untuk Login
 Route::get('/login', [AuthController::class, 'loginPage']);
-Route::post('/login', [AuthController::class, 'loginMember']);
+Route::post('/login', [AuthController::class, 'login']);
 
 # Route untuk Register
 Route::get('/register', [AuthController::class, 'registerPage']);
@@ -68,17 +68,17 @@ Route::get('/update-password-admin', function () {
 
 # Route Edit Password Admin
 Route::get('/add-item', [ProductController::class, "addItemPage"]);
-Route::post('/add-item', [ProductController::class, "storeImage"])->name('image.store');
+Route::post('/add-item', [ProductController::class, "insert"]);
 
 #routes view-cart member
-Route::get('/view-cart', function () {
+Route::get('/cart', function () {
     return view('member.view_cart');
 });
 
 #routes untuk transaction-history
-Route::get("/transactions-history", [TransactionController::class, "loadTransactions"]);
+Route::get("/history", [TransactionController::class, "loadTransactionHistory"]);
 
-#route
+# Route Edit Cart
 Route::get('/edit-cart-member', function () {
     return view('member.edit_cart_member');
 });
@@ -86,3 +86,5 @@ Route::get('/edit-cart-member', function () {
 Route::get('/edit-cart-admin', function () {
     return view('admin.edit_cart_admin');
 });
+
+# Route Add Product Admin

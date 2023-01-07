@@ -4,15 +4,15 @@
 
 @section('content')
     
-    <div class="container"> 
+    <div class="card-group mt-3" style="height: 800px; width: 1200px;"> 
 
-        <div class="row row-cols-2 row-cols-md-4 g-4 m-2"> 
+        <div class="d-flex row row-cols-2 row-cols-md-4 g-3 m-2"> 
         
             @foreach ($product_data as $item)
                 
                 <div class="col">
-                    <div class="card h-100 text-center mb-3">
-                    <div class="mt-2">
+                    <div class="card mb-3" style="height: 320px;">
+                    <div class="">
                         <img src="{{ asset('image/'.$item->image) }}" class="card-img-top size-img" alt="{{$item->name}}">
                         <div class="card-body">
                             <h5 class="card-title">{{$item->name}}</h5>

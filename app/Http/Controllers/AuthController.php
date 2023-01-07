@@ -15,13 +15,13 @@ class AuthController extends Controller
         return view('login');
     }  
       
-    public function loginMember(Request $request)
+    public function login(Request $request)
     {
         $email = $request->email;
         $password = $request->password;
 
         if($request->remember){
-            Cookie::queue('email_cookie', $email, 2);
+            Cookie::queue('email_cookie', $email);
             Cookie::queue('password_cookie', $password, 2);
         }
 
@@ -30,18 +30,25 @@ class AuthController extends Controller
             'password' => $password
         ];
 
-        if (Auth::attempt($credentials, true)){
-            Session::put('mySession', $credentials);
+        // dd($credentials);
 
-            if (Auth::user()->role == 'admin') {
-                return redirect()->route('admin.home_admin');
+        if (Auth::attempt($credentials, true)){
+
+            // $request->session()->put("mySession", $credentials);
+            Session::put('mySession', $credentials);
+            
+            // dd(Auth::user()->role);
+
+
+            if(Auth::user()->role == 'admin'){
+                return redirect('/home-admin');
             }else{
-                return redirect()->route('member.home_member');
+                return redirect('/home-member');
             }
             
         }
 
-        return redirect('/log');
+        return redirect('/login');
 
     }
 
@@ -57,6 +64,8 @@ class AuthController extends Controller
       
     public function registerMember(Request $request)
     {  
+        var_dump($request->all());
+
         $email = $request->email;
         $password = $request->password;
         $username = $request->username;
@@ -69,7 +78,6 @@ class AuthController extends Controller
             'password' => 'required|min:5|max:20',
             'phone_number' => 'required|min:10|max:13',
             'address' => 'required|min:5'
-
         ]);
 
         User::insert([
@@ -78,8 +86,9 @@ class AuthController extends Controller
             "password" => bcrypt($password),
             'username' => $username,
             'phone_number' => $phone_number,
-            'address' => $address
-        ]);
+            'address' => $address,
+            "role" => "member"
+        ]); 
            
         $credentials = [
 
@@ -88,10 +97,10 @@ class AuthController extends Controller
         ];
 
         // Login
-        if (Auth::attempt($credentials, true)) {
+        if (Auth::attempt($credentials)) {
 
             $request->session()->put('mySession', $credentials);
-            return redirect("/home-member");
+            return redirect("/login");
         }
 
         return "fail";
