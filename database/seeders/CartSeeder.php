@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class transactionDetailSeeder extends Seeder
+class CartSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,15 @@ class transactionDetailSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('transaction_details')->insert([
+        DB::table('carts')->insert([
 
             [
-                'transaction_id' => 1,
-                'product_id' => 3
+                'user_id' => 2,
+                'product_id' => 5,
+                'qty_cart' => 1
             ]
+
+            
         ]);
     }
 }

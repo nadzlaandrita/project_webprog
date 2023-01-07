@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +77,7 @@ Route::get('/cart', function () {
 });
 
 #routes untuk transaction-history
-Route::get("/history", [TransactionController::class, "loadTransactionHistory"]);
+Route::get("/history/{id}", [TransactionProductController::class, "loadTransactionHistory"]);
 
 # Route Edit Cart
 Route::get('/edit-cart-member', function () {

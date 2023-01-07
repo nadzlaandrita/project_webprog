@@ -19,8 +19,13 @@ class Product extends Model
         'image'
     ];
 
-    //Many to Many with transaction detail
+    public function user(){
+        //MANY TO MANY WITH PRODUCT
+        return $this->belongsToMany(User::class, "carts", "user_id", "product_id");
+    }
+
     public function transaction(){
-        return $this->belongsToMany(Transactions::class, 'transactions_details', 'transaction_id', 'product_id');
+        //MANY TO MANY WITH PRODUCT
+        return $this->belongsToMany(Transaction::class, "transaction_products", "transaction_id", "product_id");
     }
 }

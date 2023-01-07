@@ -9,8 +9,13 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    // Many to Many with Transaction Detail
     public function product(){
-        return $this->belongsToMany(Product::class, 'transaction_details', 'transaction_id', 'product_id');
+        //MANY TO MANY WITH PRODUCT
+        return $this->belongsToMany(Product::class, "transaction_products", "transaction_id", "product_id");
+    }
+
+    public function user()
+    {
+        return $this->hasOne(Product::class);
     }
 }

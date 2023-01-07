@@ -18,7 +18,7 @@ class transactionSeeder extends Seeder
         DB::table('transactions')->insert([
 
             [
-                'product_id' => 3,
+                'user_id' => 2,
                 'qty' => 1,
                 'total_price' => 125000,
                 'transaction_date' => Carbon::create('2022', '12', '1')

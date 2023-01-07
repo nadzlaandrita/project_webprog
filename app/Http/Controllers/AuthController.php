@@ -34,8 +34,8 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, true)){
 
-            // $request->session()->put("mySession", $credentials);
-            Session::put('mySession', $credentials);
+            $request->session()->put("mySession", $credentials); 
+            // Session::put('mySession', $credentials);
             
             // dd(Auth::user()->role);
 
