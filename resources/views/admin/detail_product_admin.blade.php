@@ -8,7 +8,7 @@
 
         <div class="container">
             <div class="gambarbaju">
-                <img src="{{ asset('image/'.$item->image) }}" alt="img" />
+                <img src="{{ url($item->image) }}" alt="img" />
             </div>
 
             <div class="deskripsi .bg-light">
@@ -20,13 +20,15 @@
                 <h4>Quantity: {{$item->qty}}</h4>
                 <div class="border-tambahan2"></div>
                 
-
-                <form>
-
+                <form method="POST" action="/deleteProduct/{{ $item->id }}">
+                    {{-- CSRF --}}
+                    @csrf
+                    {{-- METHOD DELETE --}}
+                    @method('DELETE')
                     <a type="button d-flex" class="mt-3 btn btn-danger btnchart" href="/home-admin"> Back </a>
-                    <a type="button d-flex" class="mt-3 btn btn-danger btnchart" href="#"> Delete Item </a>
-                    
+                    <button type="submit" class="mt-3 btn btn-danger btnchart">Delete Item</button>
                 </form>
+                
             </div>
         </div>
 

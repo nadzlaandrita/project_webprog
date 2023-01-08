@@ -66,10 +66,14 @@ Route::get('/update-password-member', function () {
 Route::get('/update-password-admin', function () {
     return view('admin.update_password_admin');
 });
+Route::patch('/updatePassword/{id}', [UserController::class, 'update']);
 
-# Route Edit Password Admin
+# Route Add Item
 Route::get('/add-item', [ProductController::class, "addItemPage"]);
-Route::post('/add-item', [ProductController::class, "insert"]);
+Route::post('/add-data', [ProductController::class, "insert"]);
+
+# Route Delete Product Admin
+Route::delete('/deleteProduct/{id}', [ProductController::class, 'delete']);
 
 #routes view-cart member
 Route::get('/cart', function () {

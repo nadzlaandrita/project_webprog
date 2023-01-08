@@ -8,7 +8,7 @@
 
         <div class="container">
             <div class="gambarbaju">
-            <img src="{{ asset('image/'.$item->image) }}" alt="img" />
+            <img src="{{ url($item->image) }}" alt="img" />
             </div>
 
             <div class="deskripsi .bg-light">

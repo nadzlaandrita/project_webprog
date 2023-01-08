@@ -15,20 +15,20 @@
                 </div>
 
                 <img src="{{ asset('image/'.Session::get('image')) }}" />
-
             @endif
-                <form method="POST" action="{{ url('/add-item') }}" enctype="multipart/form-data">
+
+                <form method="POST" action="{{ url('/add-data') }}" enctype="multipart/form-data">
                     @csrf
                     
                     <input type="file" class="form-control" name="image" />
 
-                    <button type="submit" class="btn btn-sm">Upload</button>
+                    {{-- <button type="submit" class="btn btn-sm">Upload Photo</button> --}}
 
                     <div class="form-group">
                         <label for="inputName">Clothes Name</label>
-                        <input type="inputName" name="name"class="form-control" id="inputName" aria-describedby="inputName" placeholder="(5-20 letters)" required autofocus>
+                        <input type="inputName" name="inputName" class="form-control" id="inputName" aria-describedby="inputName" placeholder="(5-20 letters)" required autofocus>
                         
-                        @error('name')
+                        @error('inputName')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
                             </div>
@@ -38,8 +38,8 @@
 
                     <div class="form-group">
                         <label for="inputSize">Clothes Desc</label>
-                        <input type="inputSize" name="size" class="form-control" id="inputSize" aria-describedby="inputSize" placeholder="(5-20 letters)" required autofocus>
-                        @error('size')
+                        <input type="inputSize" name="inputSize" class="form-control" id="inputSize" aria-describedby="inputSize" placeholder="(S, M, L, XL)" required autofocus>
+                        @error('inputSize')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
                             </div>
@@ -48,8 +48,8 @@
 
                     <div class="form-group">
                         <label for="inputPrice">Clothes Price</label>
-                        <input type="inputPrice" name="price" class="form-control" id="inputPrice" aria-describedby="inputPrice" placeholder=">=1000" required autofocus>
-                        @error('price')
+                        <input type="inputPrice" name="inputPrice" class="form-control" id="inputPrice" aria-describedby="inputPrice" placeholder=">=1000" required autofocus>
+                        @error('inputPrice')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
                             </div>
@@ -58,17 +58,15 @@
 
                     <div class="form-group">
                         <label for="inputStock">Clothes Stock</label>
-                        <input type="inputStock" name="qty" class="form-control" id="inputStock" aria-describedby="inputStock" placeholder=">=1" required autofocus>
-                        @error('qty')
+                        <input type="inputStock" name="inputStock" class="form-control" id="inputStock" aria-describedby="inputStock" placeholder=">=1" required autofocus>
+                        @error('inputStock')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
-                    
-                    <button type="button d-flex" class="mt-3 btn btn-outline-danger btnchart">
-                        Add
-                    </button>
+
+                    <input type="submit" value="Add" class="button d-flex mt-3 btn btn-outline-danger btnchart">
 
                 </form>
             </div>

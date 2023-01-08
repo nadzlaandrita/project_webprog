@@ -12,7 +12,7 @@
         <div class="col">
           <div class="card mb-3" style="height: 320px;">
             <div class="">
-              <img src="{{ asset('image/'.$item->image) }}" class="card-img-top size-img" alt="{{$item->name}}">
+              <img src="{{ url($item->image) }}" class="card-img-top size-img" alt="{{$item->name}}">
               <div class="card-body">
                   <h5 class="card-title">{{$item->name}}</h5>
                   <p class="card-text">Rp. {{$item->price}}</p>

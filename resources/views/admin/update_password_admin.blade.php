@@ -9,7 +9,9 @@
             <div class="card-body">
                 <h1 class="text-center">Update Password</h1>
 
-                <form>
+                @foreach ($user as $user)
+                <form method="POST" action="/deleteProduct/{{ $user->id }}">
+                    @csrf
 
                     <div class="form-group">
                         <label for="old_password">Old Password</label>
@@ -25,7 +27,7 @@
 
                     <div class="form-group">
                         <label for="new_password">New Password</label>
-                        <input type="new_password" class="form-control" id="new_password" aria-describedby="new_password" placeholder="(5-20 letters)" required autofocus>
+                        <input value="{{$user->password}}" type="new_password" class="form-control" id="new_password" aria-describedby="new_password" placeholder="(5-20 letters)" required autofocus>
                         @error('new_password')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -41,6 +43,8 @@
                         <a type="button" class="mt-2 btn btn-outline-danger" href="/profile-admin">Back</a>
                     </div>
                 </form>
+
+                @endforeach
             </div>
         </div>
     </div>

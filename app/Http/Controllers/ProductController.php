@@ -62,44 +62,40 @@ class ProductController extends Controller
         return view('admin.add_item');
     }
 
-    // Store Image
-    public function storeImage(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
-        ]);
-
-        $imageName = time().'.'.$request->image->extension();
-
-        // Public Folder
-        $request->image->move(public_path('image'), $imageName);
-
-        // //Store in Storage Folder
-        // $request->image->storeAs('images', $imageName);
-
-        // // Store in S3
-        // $request->image->storeAs('images', $imageName, 's3');
-
-        //Store IMage in DB 
-
-
-        return back()->with('success', 'Image uploaded Successfully!')
-        ->with('image', $imageName);
-    }
-
     public function insert(Request $request)
     {
-        $image_path = $request->file('image')->store('image', 'public');
+        $request->validate([
+            'inputName' => 'required|min:5|max:20',
+            'inputSize' => 'required',
+            'inputPrice' => 'required|integer|min:1000',
+            'inputStock' => 'required|integer|min:1',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        
+        $path = $request->image->move('image/', $imageName);
+
 
         //CREATE NEW PRODUCT
-        Product::create([
+        Product::insert([
             'name' => $request->inputName,
             'size' => $request->inputSize,
             'price' => $request->inputPrice,
             'qty' => $request->inputStock,
-            'image' => $request->image_path
+            'image' => $path
         ]);
 
+        // dd($path);
+
+        return redirect('/home-admin');
+    }
+
+    public function delete($id)
+    {
+        //DELETE PRODUCT
+        $product = Product::find($id);
+        $product->delete();
         return redirect('/home-admin');
     }
     

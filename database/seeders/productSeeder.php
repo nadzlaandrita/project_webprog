@@ -21,7 +21,7 @@ class productSeeder extends Seeder
                 'size'=>'XL',
                 'price'=>150000,
                 'qty'=>30,
-                'image'=>'black_man_jacket.jpg'
+                'image'=>'image\black_man_jacket.jpg'
             ],
 
             [
@@ -29,7 +29,7 @@ class productSeeder extends Seeder
                 'size'=>'XL',
                 'price'=>150000,
                 'qty'=>30,
-                'image'=>'blue_man_jacket.jpg'
+                'image'=>'image\blue_man_jacket.jpg'
             ],
 
             [
@@ -37,7 +37,7 @@ class productSeeder extends Seeder
                 'size'=>'L',
                 'price'=>125000,
                 'qty'=>30,
-                'image'=>'brown_man_shorts.jpg'
+                'image'=>'image\brown_man_shorts.jpg'
             ],
 
             [
@@ -45,7 +45,7 @@ class productSeeder extends Seeder
                 'size'=>'M',
                 'price'=>100000,
                 'qty'=>30,
-                'image'=>'flower_baby_dress.jpg'
+                'image'=>'image\flower_baby_dress.jpg'
             ],
 
             [
@@ -53,7 +53,7 @@ class productSeeder extends Seeder
                 'size'=>'L',
                 'price'=>110000,
                 'qty'=>30,
-                'image'=>'green_baby_cloth.jpg'
+                'image'=>'image\green_baby_cloth.jpg'
             ],
 
             [
@@ -61,7 +61,7 @@ class productSeeder extends Seeder
                 'size'=>'XL',
                 'price'=>250000,
                 'qty'=>30,
-                'image'=>'green_blazer.jpg'
+                'image'=>'image\green_blazer.jpg'
             ],
 
             [
@@ -69,7 +69,7 @@ class productSeeder extends Seeder
                 'size'=>'S',
                 'price'=>150000,
                 'qty'=>30,
-                'image'=>'green_man_shirt.jpg'
+                'image'=>'image\green_man_shirt.jpg'
             ],
 
             [
@@ -77,7 +77,7 @@ class productSeeder extends Seeder
                 'size'=>'XL',
                 'price'=>280000,
                 'qty'=>30,
-                'image'=>'green_overall.jpg'
+                'image'=>'image\green_overall.jpg'
             ],
 
             [
@@ -85,7 +85,7 @@ class productSeeder extends Seeder
                 'size'=>'L',
                 'price'=>200000,
                 'qty'=>30,
-                'image'=>'green_trouser.jpg'
+                'image'=>'image\green_trouser.jpg'
             ],
 
             [
@@ -93,7 +93,7 @@ class productSeeder extends Seeder
                 'size'=>'XL',
                 'price'=>290000,
                 'qty'=>30,
-                'image'=>'green_woman_set.jpg'
+                'image'=>'image\green_woman_set.jpg'
             ],
 
             [
@@ -101,7 +101,7 @@ class productSeeder extends Seeder
                 'size'=>'M',
                 'price'=>120000,
                 'qty'=>30,
-                'image'=>'lime_baby_dress.jpg'
+                'image'=>'image\lime_baby_dress.jpg'
             ],
 
             [
@@ -109,7 +109,7 @@ class productSeeder extends Seeder
                 'size'=>'M',
                 'price'=>125000,
                 'qty'=>30,
-                'image'=>'lime_skirt.jpg'
+                'image'=>'image\lime_skirt.jpg'
             ],
 
             [
@@ -117,7 +117,7 @@ class productSeeder extends Seeder
                 'size'=>'XL',
                 'price'=>250000,
                 'qty'=>30,
-                'image'=>'matcha_man_pants.jpg'
+                'image'=>'image\matcha_man_pants.jpg'
             ],
 
             [
@@ -125,7 +125,7 @@ class productSeeder extends Seeder
                 'size'=>'S',
                 'price'=>200000,
                 'qty'=>30,
-                'image'=>'pink_baby_dress.jpg'
+                'image'=>'image\pink_baby_dress.jpg'
             ],
 
             [
@@ -133,7 +133,7 @@ class productSeeder extends Seeder
                 'size'=>'XL',
                 'price'=>299000,
                 'qty'=>30,
-                'image'=>'white_blazer.jpg'
+                'image'=>'image\white_blazer.jpg'
             ],
 
             [
@@ -141,7 +141,7 @@ class productSeeder extends Seeder
                 'size'=>'M',
                 'price'=>230000,
                 'qty'=>30,
-                'image'=>'white_skirt.jpg'
+                'image'=>'image\white_skirt.jpg'
             ],
 
             [
@@ -149,7 +149,7 @@ class productSeeder extends Seeder
                 'size'=>'M',
                 'price'=>180000,
                 'qty'=>30,
-                'image'=>'yellow_man_shirt.jpg'
+                'image'=>'image\yellow_man_shirt.jpg'
             ]
 
         ]);
