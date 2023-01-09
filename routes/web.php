@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,31 +43,16 @@ Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
 Route::get('/home-member/detail-product-{id}', [ProductController::class, "loadDetailProductMember"]);
 Route::get('/home-admin/detail-product-{id}', [ProductController::class, "loadDetailProductAdmin"]);
 
-# Route Profile Member
-Route::get('/profile-member', function () {
-    return view('member.profile_member');
-});
+# Route Profile
+Route::get('/profile', [UserController::class, "loadProfileUser"]);
 
-# Route Profile Admin
-Route::get('/profile-admin', function () {
-    return view('admin.profile_admin');
-});
+# Route Edit Profile
+Route::get('/update-profile', [UserController::class, "loadUpdatePage"]);
+Route::patch('/update-profile', [UserController::class, "updateProfile"]);
 
-# Route Edit Profile Member
-Route::get('/update-profile', function () {
-    return view('member.update_profile');
-});
-
-# Route Edit Password Member
-Route::get('/update-password-member', function () {
-    return view('member.update_password_member');
-});
-
-# Route Edit Password Admin
-Route::get('/update-password-admin', function () {
-    return view('admin.update_password_admin');
-});
-Route::patch('/updatePassword/{id}', [UserController::class, 'update']);
+# Route Edit Password
+Route::get('/update-password', [UserController::class, "loadUpdatePasswordPage"]);
+Route::patch('/update-password', [UserController::class, "updatePassword"]);
 
 # Route Add Item
 Route::get('/add-item', [ProductController::class, "addItemPage"]);

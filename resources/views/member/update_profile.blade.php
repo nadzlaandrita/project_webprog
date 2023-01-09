@@ -9,11 +9,13 @@
             <div class="card-body">
                 <h1 class="text-center">Update Profile</h1>
 
-                <form>
-
+                <form method="POST" action="{{ url('/update-profile') }}">
+                    @method('PATCH')
+                    @csrf
+                    
                     <div class="form-group">
                         <label for="exampleInputUsername">Username</label>
-                        <input type="username" class="form-control" id="email" aria-describedby="emailHelp" placeholder="(5-20 letters)" required autofocus>
+                        <input type="text" name="username" class="form-control" id="email" aria-describedby="emailHelp" placeholder="(5-20 letters)" value="{{ $user_data->username }}" required autofocus>
                         
                         @error('username')
                             <div class="alert alert-dismissible alert-danger">
@@ -25,7 +27,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ $user_data->email }}" required autofocus>
                         @error('email')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -35,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPhoneNumber">Phone Number</label>
-                        <input type="phone_number" class="form-control" id="phone_number" placeholder="(10-13 numbers)" required>
+                        <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="(10-13 numbers)" value="{{ $user_data->phone_number }}" required>
                         @error('phone_number')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -45,7 +47,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputAddress">Address</label>
-                        <input type="address" class="form-control" id="address" placeholder="(min 5 letters)" required>
+                        <input type="text" name="address" class="form-control" id="address" placeholder="(min 5 letters)" value="{{ $user_data->address }}" required>
                         @error('address')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -58,7 +60,7 @@
                     </div>
 
                     <div>
-                        <a type="button" class="mt-2 btn btn-outline-danger" href="/profile-member">Back</a>
+                        <a type="button" class="mt-2 btn btn-outline-danger" href="/profile">Back</a>
                     </div>
                 </form>
             </div>

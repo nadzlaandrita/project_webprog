@@ -27,7 +27,7 @@
         <a class="nav-item nav-link" href="#">Search</a>
         <a class="nav-item nav-link" href="/cart">Cart</a>
         <a class="nav-item nav-link" href="/history">History</a>
-        <a class="nav-item nav-link" href="/profile-member">Profile</a>
+        <a class="nav-item nav-link" href="/profile">Profile</a>
       </div>
     </div>
 
