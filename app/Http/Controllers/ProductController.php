@@ -17,7 +17,7 @@ class ProductController extends Controller
         return view('member.home_member', [
             'product_data' => $product_data
         ]);
-        
+
     }
 
     public function loadProductAdmin(){
@@ -25,11 +25,11 @@ class ProductController extends Controller
         $product_data = DB::table('products')->get();
 
         $product_data = Product::paginate(8);
-        
+
         return view('admin.home_admin', [
             'product_data' => $product_data
         ]);
-        
+
     }
 
     public function loadDetailProductMember($id){
@@ -73,7 +73,7 @@ class ProductController extends Controller
         ]);
 
         $imageName = time().'.'.$request->image->getClientOriginalExtension();
-        
+
         $path = $request->image->move('image/', $imageName);
 
 
@@ -98,5 +98,21 @@ class ProductController extends Controller
         $product->delete();
         return redirect('/home-admin');
     }
-    
+
+    public function viewPageSearchMember(Request $request)
+    {
+        //SEARCH
+        $products = Product::where('name','like',"%$request->search%")->paginate(8);
+
+        return view('member.search_page_member')->with('products', $products);
+    }
+
+    public function viewPageSearchAdmin(Request $request)
+    {
+        //SEARCH
+        $products = Product::where('name','like',"%$request->search%")->paginate(8);
+
+        return view('admin.search_page_admin')->with('products', $products);
+    }
+
 }

@@ -93,3 +93,14 @@ Route::get('/edit-cart-admin', function () {
 });
 
 # Route Add Product Admin
+
+
+#Route SearchPage
+Route::get('/search-page-member', function () {
+    return view('member.search_page_member');
+});
+
+
+Route::get('/search-page-member', [ProductController::class, 'viewPageSearchMember']);
+
+Route::get('/search-page-admin', [ProductController::class, 'viewPageSearchAdmin']);
