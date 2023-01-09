@@ -9,13 +9,14 @@
             <div class="card-body">
                 <h1 class="text-center">Update Password</h1>
 
-                @foreach ($user as $user)
-                <form method="POST" action="/deleteProduct/{{ $user->id }}">
+                <form method="POST" action="{{ url('/update-password')}}" enctype="multipart/form-data">
+
+                    @method('PATCH')
                     @csrf
 
                     <div class="form-group">
                         <label for="old_password">Old Password</label>
-                        <input type="username" class="form-control" id="old_password" aria-describedby="old_password" placeholder="(5-20 letters)" required autofocus>
+                        <input type="password" name="old_password" class="form-control" id="old_password" aria-describedby="old_password" placeholder="(5-20 letters)" required autofocus>
                         
                         @error('old_password')
                             <div class="alert alert-dismissible alert-danger">
@@ -27,7 +28,7 @@
 
                     <div class="form-group">
                         <label for="new_password">New Password</label>
-                        <input value="{{$user->password}}" type="new_password" class="form-control" id="new_password" aria-describedby="new_password" placeholder="(5-20 letters)" required autofocus>
+                        <input type="password" name="new_password" class="form-control" id="new_password" aria-describedby="new_password" placeholder="(5-20 letters)" required autofocus>
                         @error('new_password')
                             <div class="alert alert-dismissible alert-danger">
                                 {{ $message }}
@@ -40,11 +41,10 @@
                     </div>
 
                     <div>
-                        <a type="button" class="mt-2 btn btn-outline-danger" href="/profile-admin">Back</a>
+                        <a type="button" class="mt-2 btn btn-outline-danger" href="/profile">Back</a>
                     </div>
                 </form>
 
-                @endforeach
             </div>
         </div>
     </div>

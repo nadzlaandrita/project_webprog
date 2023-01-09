@@ -25,7 +25,7 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/home-admin">Home</a>
         <a class="nav-item nav-link" href="#">Search</a>
-        <a class="nav-item nav-link" href="/profile-admin">Profile</a>
+        <a class="nav-item nav-link" href="/profile">Profile</a>
       </div>
     </div>
 
