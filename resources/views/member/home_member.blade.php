@@ -19,7 +19,7 @@
               </div>
             </div>
             
-            <a href="/home-member/detail-product-{{$item->id}}" class="mx-2 btn btn-primary btnchart">More Detail</a>
+            <a href="/home/detail-product-{{$item->id}}" class="mx-2 btn btn-primary btnchart">More Detail</a>
           </div>
         </div>
 

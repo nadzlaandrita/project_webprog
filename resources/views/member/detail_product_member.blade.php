@@ -33,7 +33,7 @@
                     Add To cart
                 </button>
                 </div>
-                <a type="button" class="btn btn-danger" href="/home-member">Back</a>
+                <a type="button" class="btn btn-danger" href="/home">Back</a>
             </form>
             </div>
         </div>

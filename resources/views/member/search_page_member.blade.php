@@ -7,7 +7,7 @@
 <br>
 <h1 class="d-flex justify-content-center"> Search Your Favorite Clothes</h1>
 <br>
-<form class="d-flex justify-content-center" action="{{ url('/search-page-member') }}">
+<form class="d-flex justify-content-center" action="{{ url('/search') }}">
     <input class="form-control
      me-2 w-75 " type="search" placeholder="Search" aria-label="Search"
         name="search">
@@ -27,7 +27,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ $product->name }}</h5>
                   <p class="card-text">{{$product->price}}</p>
-                  <a href="#" class="btn btn-primary">More Details</a>
+                  <a href="/home/detail-product-{{$product->id}}" class="btn btn-primary">More Details</a>
                 </div>
             </div>
         @endforeach

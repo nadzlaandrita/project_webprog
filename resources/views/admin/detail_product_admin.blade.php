@@ -25,7 +25,7 @@
                     @csrf
                     {{-- METHOD DELETE --}}
                     @method('DELETE')
-                    <a type="button d-flex" class="mt-3 btn btn-danger btnchart" href="/home-admin"> Back </a>
+                    <a type="button d-flex" class="mt-3 btn btn-danger btnchart" href="/home"> Back </a>
                     <button type="submit" class="mt-3 btn btn-danger btnchart">Delete Item</button>
                 </form>
                 

@@ -4,55 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public function loadProductMember(){
+    public function loadProductPage(){
 
         $product_data = DB::table('products')->get();
 
         $product_data = Product::paginate(8);
 
-        return view('member.home_member', [
-            'product_data' => $product_data
-        ]);
-
-    }
-
-    public function loadProductAdmin(){
-
-        $product_data = DB::table('products')->get();
-
-        $product_data = Product::paginate(8);
-
-        return view('admin.home_admin', [
-            'product_data' => $product_data
-        ]);
-
-    }
-
-    public function loadDetailProductMember($id){
-
-        $detail_product_data = DB::table('products')->get()->where('id', $id);
-
-        if($detail_product_data->contains('id', $id)){
-            return view('member.detail_product_member', [
-                'detail_product_data' => $detail_product_data
+        if(Auth::user()->role == 'admin'){
+            return view('admin.home_admin', [
+                'product_data' => $product_data
             ]);
         }else{
-            return abort(404);
+            return view('member.home_member', [
+                'product_data' => $product_data
+            ]);
         }
+
     }
 
-    public function loadDetailProductAdmin($id){
+    public function loadDetailProduct($id){
 
         $detail_product_data = DB::table('products')->get()->where('id', $id);
 
         if($detail_product_data->contains('id', $id)){
-            return view('admin.detail_product_admin', [
-                'detail_product_data' => $detail_product_data
-            ]);
+
+            if(Auth::user()->role == 'admin'){
+                return view('admin.detail_product_admin', [
+                    'detail_product_data' => $detail_product_data
+                ]);
+            }else{
+                return view('member.detail_product_member', [
+                    'detail_product_data' => $detail_product_data
+                ]);
+            }
+
         }else{
             return abort(404);
         }
@@ -99,20 +89,18 @@ class ProductController extends Controller
         return redirect('/home-admin');
     }
 
-    public function viewPageSearchMember(Request $request)
+    public function viewPageSearch(Request $request)
     {
         //SEARCH
         $products = Product::where('name','like',"%$request->search%")->paginate(8);
 
-        return view('member.search_page_member')->with('products', $products);
-    }
-
-    public function viewPageSearchAdmin(Request $request)
-    {
-        //SEARCH
-        $products = Product::where('name','like',"%$request->search%")->paginate(8);
-
-        return view('admin.search_page_admin')->with('products', $products);
+        if(Auth::user()->role == 'admin'){
+            return view('admin.search_page_admin')->with('products', $products);
+        }else{
+            return view('member.search_page_member')->with('products', $products);
+        }
+        
+        
     }
 
 }

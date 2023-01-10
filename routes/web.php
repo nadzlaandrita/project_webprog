@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
@@ -34,14 +35,11 @@ Route::post('/register', [AuthController::class, 'registerMember']);
 # Route untuk Sign Out
 Route::get('/logout', [AuthController::class, 'logout']);
 
-# Route untuk home (member)
-Route::get("/home-member", [ProductController::class, 'loadProductMember']);
-Route::get("/home-admin", [ProductController::class, "loadProductAdmin"]);
+# Route untuk home
+Route::get("/home", [ProductController::class, 'loadProductPage']);
 
-
-#Route detail product (member)
-Route::get('/home-member/detail-product-{id}', [ProductController::class, "loadDetailProductMember"]);
-Route::get('/home-admin/detail-product-{id}', [ProductController::class, "loadDetailProductAdmin"]);
+#Route detail product
+Route::get('/home/detail-product-{id}', [ProductController::class, "loadDetailProduct"]);
 
 # Route Profile
 Route::get('/profile', [UserController::class, "loadProfileUser"]);
@@ -54,20 +52,23 @@ Route::patch('/update-profile', [UserController::class, "updateProfile"]);
 Route::get('/update-password', [UserController::class, "loadUpdatePasswordPage"]);
 Route::patch('/update-password', [UserController::class, "updatePassword"]);
 
-# Route Add Item
+# Route Add Product
 Route::get('/add-item', [ProductController::class, "addItemPage"]);
 Route::post('/add-data', [ProductController::class, "insert"]);
 
-# Route Delete Product Admin
+# Route Delete Product
 Route::delete('/deleteProduct/{id}', [ProductController::class, 'delete']);
+
+#routes untuk transaction-history
+Route::get("/history/{id}", [TransactionProductController::class, "loadTransactionHistory"]);
+
+# Route Add Cart
+Route::post('/add-cart/{id}', [CartController::class, 'addCart']);
 
 #routes view-cart member
 Route::get('/cart', function () {
     return view('member.view_cart');
 });
-
-#routes untuk transaction-history
-Route::get("/history/{id}", [TransactionProductController::class, "loadTransactionHistory"]);
 
 # Route Edit Cart
 Route::get('/edit-cart-member', function () {
@@ -78,15 +79,8 @@ Route::get('/edit-cart-admin', function () {
     return view('admin.edit_cart_admin');
 });
 
-# Route Add Product Admin
 
 
 #Route SearchPage
-Route::get('/search-page-member', function () {
-    return view('member.search_page_member');
-});
+Route::get('/search', [ProductController::class, 'viewPageSearch']);
 
-
-Route::get('/search-page-member', [ProductController::class, 'viewPageSearchMember']);
-
-Route::get('/search-page-admin', [ProductController::class, 'viewPageSearchAdmin']);
