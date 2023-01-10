@@ -30,7 +30,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 # Route untuk Register
 Route::get('/register', [AuthController::class, 'registerPage']);
-Route::post('/register', [AuthController::class, 'registerMember']);
+Route::post('/register', [AuthController::class, 'register']);
 
 # Route untuk Sign Out
 Route::get('/logout', [AuthController::class, 'logout']);
@@ -62,23 +62,18 @@ Route::delete('/deleteProduct/{id}', [ProductController::class, 'delete']);
 #routes untuk transaction-history
 Route::get("/history/{id}", [TransactionProductController::class, "loadTransactionHistory"]);
 
+# Routes View Cart
+Route::get('/cart', [CartController::class, 'loadCart']);
+
 # Route Add Cart
 Route::post('/add-cart/{id}', [CartController::class, 'addCart']);
 
-#routes view-cart member
-Route::get('/cart', function () {
-    return view('member.view_cart');
-});
+# Route Delete Cart
+Route::delete('/remove-cart/{product_id}', [CartController::class, 'removeCart']);
 
 # Route Edit Cart
-Route::get('/edit-cart-member', function () {
-    return view('member.edit_cart_member');
-});
-
-Route::get('/edit-cart-admin', function () {
-    return view('admin.edit_cart_admin');
-});
-
+Route::get('/edit-cart/{product_id}', [CartController::class, "loadEditCartPage"]);
+Route::patch('/edit-cart/{product_id}', [CartController::class, "editCart"]);
 
 
 #Route SearchPage

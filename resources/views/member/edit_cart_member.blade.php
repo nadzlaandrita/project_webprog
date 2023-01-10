@@ -4,37 +4,43 @@
 
 @section('content')
 
-<div class="container">
-    <div class="gambarbaju">
-      <img src="baju1.jpg" alt="jaket" />
-    </div>
+@foreach($item as $item)
+  <div class="container">
+      <div class="gambarbaju">
+        <img src="{{ url($item->product->image) }}" alt="jaket" />
+      </div>
 
-    <div class="deskripsi .bg-light">
-      <h2><b>Red Jacket</b></h2>
-      <h3><b>Rp.10.000</b></h3>
-      <div class="border-tambahan1"></div>
-      <h4>Product Detail</h4>
-      <h6>suitable for kids size: M</h6>
-      <div class="border-tambahan2"></div>
-      <h4>Quantity</h4>
+      <div class="deskripsi .bg-light">
+        <h2><b>{{$item->product->name}}</b></h2>
+        <h3><b>Rp. {{$item->product->price}}</b></h3>
+        <div class="border-tambahan1"></div>
+        <h4>Product Detail</h4>
+        <h6>Size: {{$item->product->size}}</h6>
+        <div class="border-tambahan2"></div>
+        <h4>Quantity: {{$item->product->qty}}</h4>
 
-      <form>
-        <div class="form-group d-flex">
-          <input
-            type="number"
-            id="Quantity"
-            class="form-control"
-            placeholder="Quantity"
-            min="1"
-          />
-          <button type="button d-flex" class="btn btn-success btnchart">
-            Update Cart
-          </button>
-        </div>
-        <button type="button" class="btn btn-danger">Back</button>
-      </form>
-    </div>
+        <form action="/edit-cart/{{$item->product_id}}" method="POST">
+          @method('PATCH')
+          @csrf
+
+          <div class="form-group d-flex">
+            <input
+              type="number"
+              name="inputQuantity"
+              id="Quantity"
+              class="form-control"
+              placeholder="Quantity"
+            />
+            <button type="submit" class="btn btn-success btnchart">
+              Update Cart
+            </button>
+          </div>
+          <button type="button" class="btn btn-danger">Back</button>
+        </form>
+
+      </div>
   </div>
+@endforeach
 
   <style>
     .container {

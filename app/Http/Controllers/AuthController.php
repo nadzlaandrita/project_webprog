@@ -41,9 +41,9 @@ class AuthController extends Controller
 
 
             if(Auth::user()->role == 'admin'){
-                return redirect('/home-admin');
+                return redirect('/home');
             }else{
-                return redirect('/home-member');
+                return redirect('/home');
             }
             
         }
@@ -62,7 +62,7 @@ class AuthController extends Controller
         return view('register');
     }
       
-    public function registerMember(Request $request)
+    public function register(Request $request)
     {  
         var_dump($request->all());
 

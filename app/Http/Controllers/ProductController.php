@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         // dd($path);
 
-        return redirect('/home-admin');
+        return redirect('/home');
     }
 
     public function delete($id)
@@ -86,7 +86,7 @@ class ProductController extends Controller
         //DELETE PRODUCT
         $product = Product::find($id);
         $product->delete();
-        return redirect('/home-admin');
+        return redirect('/home');
     }
 
     public function viewPageSearch(Request $request)
