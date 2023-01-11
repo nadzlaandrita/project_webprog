@@ -15,9 +15,10 @@
       @csrf
       <button type="submit" class="btn btn-primary">checkout</button>
     </form>
-    
-  </div>
 
+  </div>
+    <div class="card-group mt-3" style="height: 800px; width: 1200px; ">
+    <div class="d-flex row row-cols-2 row-cols-md-4 g-3 m-2">
     @foreach($cart_data as $item)
       <div class="card m-3" style="width: 18rem">
         <img class="card-img-top" src="{{ url($item->product->image)}}" alt="Card image cap" />
@@ -29,7 +30,7 @@
           <a href="/edit-cart/{{$item->product_id}}" class="btn btn-primary">Edit Cart</a>
 
           <form action="/remove-cart/{{$item->product_id}}" method="POST">
-            
+
             @method('DELETE')
             @csrf
 
@@ -37,10 +38,12 @@
               Remove from Cart
           </button>
           </form>
-          
+
         </div>
       </div>
     @endforeach
+    </div>
+    </div>
 
   <style>
     h5 {
@@ -49,7 +52,11 @@
     }
     .btn{
         padding-left: 5px;
-        align-items:
+    }
+    img{
+        margin:auto;
+        width: 200px;
+        height:250px
     }
   </style>
 @endsection

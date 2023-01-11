@@ -5,10 +5,10 @@
 @section('content')
 
   <div class="card-group mt-3" style="height: 800px; width: 1200px; ">
-    <div class="d-flex row row-cols-2 row-cols-md-4 g-3 m-2"> 
+    <div class="d-flex row row-cols-2 row-cols-md-4 g-3 m-2">
 
       @foreach ($product_data as $item)
-          
+
         <div class="col">
           <div class="card mb-3" style="height: 320px;">
             <div class="">
@@ -18,7 +18,7 @@
                   <p class="card-text">Rp. {{$item->price}}</p>
               </div>
             </div>
-            
+
             <a href="/home/detail-product-{{$item->id}}" class="mx-2 btn btn-primary btnchart">More Detail</a>
           </div>
         </div>
@@ -33,35 +33,15 @@
       {!! $product_data->links() !!}
   </div>
 
-    {{-- <div class="p-5 d-flex" style="position: relative">
-        {{-- PAGINATION NAVIGATION --}}
-        {{-- {{$product_data->withQuerySring()->links()}} --}}
 
-    {{-- </div> --}}
-
-    {{-- <div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" href="{{$product_data->links()}}" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="{{$product_data->links()}}">1</a></li>
-              <li class="page-item"><a class="page-link" href="">2</a></li>
-              <li class="page-item"><a class="page-link" href="">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          
-    </div> --}}
-    
+  <style>
+    .card-group{
+        margin-left: 14%
+    }
+    .btn{
+         margin-left: 5px;
+    }
+    </style>
 
 
 @endsection
