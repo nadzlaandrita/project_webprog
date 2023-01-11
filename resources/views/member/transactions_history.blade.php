@@ -1,6 +1,6 @@
 @extends('member.navbar_member')
 
-@section('title', 'transaction-history')
+@section('title', 'transaction_history')
 
 @section('content')
 
@@ -9,18 +9,18 @@
   </div>
     <br>
 
-  @foreach ($transactions as $data)
+  @foreach ($transaction_data as $data)
+
     <div class="isi-transaksi bg-light ">
-      <h5>{{$data->transaction_date}}</h5>
+      <h5>{{$data->transactionProduct->created_at}}</h5>
       <ul>
-        <li> {{$data->qty}} {{$data->name}} </li>
+        <li> {{$data->transactionProduct->qty}} {{$data->product->name}} </li>
       </ul>
-      <h5>Rp {{$data->total_price }}</h5>
+      <h5>Rp {{$total_price = $data->product->price * $data->transactionProduct->qty;}}</h5>
     </div>
   @endforeach
-
-
-
+    
+  
   <style>
     .isi-transaksi{
       margin-left: 30px;

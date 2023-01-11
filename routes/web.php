@@ -60,7 +60,7 @@ Route::post('/add-data', [ProductController::class, "insert"]);
 Route::delete('/deleteProduct/{id}', [ProductController::class, 'delete']);
 
 #routes untuk transaction-history
-Route::get("/history/{id}", [TransactionProductController::class, "loadTransactionHistory"]);
+Route::get("/history", [TransactionController::class, "loadTransactions"]);
 
 # Routes View Cart
 Route::get('/cart', [CartController::class, 'loadCart']);

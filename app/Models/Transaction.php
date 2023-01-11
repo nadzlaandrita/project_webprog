@@ -11,11 +11,16 @@ class Transaction extends Model
 
     public function product(){
         //MANY TO MANY WITH PRODUCT
-        return $this->belongsToMany(Product::class, "transaction_products", "transaction_id", "product_id");
+        return $this->belongsToMany(Product::class, 'transaction_products', 'transaction_id', 'product_id');
+        // return $this->belongsToMany(Product::class);
+    }
+
+    public function transaction_product(){
+        return $this->hasMany(TransactionProduct::class);
     }
 
     public function user()
     {
-        return $this->hasOne(Product::class);
+        return $this->hasMany(User::class);
     }
 }

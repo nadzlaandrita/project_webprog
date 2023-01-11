@@ -20,7 +20,7 @@ class transactionProductSeeder extends Seeder
                 'transaction_id' => 1,
                 'product_id' => 3,
                 'qty' => 2,
-                'subprice' => 250000
+                'total_price' => 250000
             ]
         ]);
     }

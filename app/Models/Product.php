@@ -21,11 +21,11 @@ class Product extends Model
 
     public function user(){
         //MANY TO MANY WITH PRODUCT
-        return $this->belongsToMany(User::class, "carts", "user_id", "product_id");
+        return $this->belongsToMany(User::class, 'cart', 'product_id', 'user_id');
     }
 
     public function transaction(){
         //MANY TO MANY WITH PRODUCT
-        return $this->belongsToMany(Transaction::class, "transaction_products", "transaction_id", "product_id");
+        return $this->belongsToMany(Transaction::class, 'transaction_product', 'product_id', 'transaction_id');
     }
 }
