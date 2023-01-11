@@ -19,63 +19,103 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Route untuk Welcome
 Route::get('/', function (){
     return view('welcomepage');
 });
 
-# Route untuk Login
-Route::get('/login', [AuthController::class, 'loginPage']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::middleware(['auth'])->group(function () {
+    #yang bisa dua duanya baik admin sama member
 
-# Route untuk Register
-Route::get('/register', [AuthController::class, 'registerPage']);
-Route::post('/register', [AuthController::class, 'register']);
+    # Route untuk Sign Out
+    Route::get('/logout', [AuthController::class, 'logout']);
 
-# Route untuk Sign Out
-Route::get('/logout', [AuthController::class, 'logout']);
+    # Route untuk home
+    Route::get("/home", [ProductController::class, 'loadProductPage']);
 
-# Route untuk home
-Route::get("/home", [ProductController::class, 'loadProductPage']);
+    #Route detail product
+    Route::get('/home/detail-product-{id}', [ProductController::class, "loadDetailProduct"]);
 
-#Route detail product
-Route::get('/home/detail-product-{id}', [ProductController::class, "loadDetailProduct"]);
+    # Route Profile
+    Route::get('/profile', [UserController::class, "loadProfileUser"]);
 
-# Route Profile
-Route::get('/profile', [UserController::class, "loadProfileUser"]);
+    # Route Edit Password
+    Route::get('/update-password', [UserController::class, "loadUpdatePasswordPage"]);
+    Route::patch('/update-password', [UserController::class, "updatePassword"]);
 
-# Route Edit Profile
-Route::get('/update-profile', [UserController::class, "loadUpdatePage"]);
-Route::patch('/update-profile', [UserController::class, "updateProfile"]);
-
-# Route Edit Password
-Route::get('/update-password', [UserController::class, "loadUpdatePasswordPage"]);
-Route::patch('/update-password', [UserController::class, "updatePassword"]);
-
-# Route Add Product
-Route::get('/add-item', [ProductController::class, "addItemPage"]);
-Route::post('/add-data', [ProductController::class, "insert"]);
-
-# Route Delete Product
-Route::delete('/deleteProduct/{id}', [ProductController::class, 'delete']);
-
-#routes untuk transaction-history
-Route::get("/history", [TransactionController::class, "loadTransactions"]);
-
-# Routes View Cart
-Route::get('/cart', [CartController::class, 'loadCart']);
-
-# Route Add Cart
-Route::post('/add-cart/{id}', [CartController::class, 'addCart']);
-
-# Route Delete Cart
-Route::delete('/remove-cart/{product_id}', [CartController::class, 'removeCart']);
-
-# Route Edit Cart
-Route::get('/edit-cart/{product_id}', [CartController::class, "loadEditCartPage"]);
-Route::patch('/edit-cart/{product_id}', [CartController::class, "editCart"]);
+    #Route SearchPage
+    Route::get('/search', [ProductController::class, 'viewPageSearch']);
 
 
-#Route SearchPage
-Route::get('/search', [ProductController::class, 'viewPageSearch']);
+        Route::middleware(['MemberOnly'])->group(function () {
+            # Route Edit Profile
+            Route::get('/update-profile', [UserController::class, "loadUpdatePage"]);
+            Route::patch('/update-profile', [UserController::class, "updateProfile"]);
+
+            #routes untuk transaction-history
+            Route::get("/history", [TransactionController::class, "loadTransactions"]);
+
+            # Routes View Cart
+            Route::get('/cart', [CartController::class, 'loadCart']);
+
+            # Route Add Cart
+            Route::post('/add-cart/{id}', [CartController::class, 'addCart']);
+
+            # Route Delete Cart
+            Route::delete('/remove-cart/{product_id}', [CartController::class, 'removeCart']);
+
+            # Route Edit Cart
+            Route::get('/edit-cart/{product_id}', [CartController::class, "loadEditCartPage"]);
+            Route::patch('/edit-cart/{product_id}', [CartController::class, "editCart"]);
+        });
+
+        Route::middleware(['AdminOnly'])->group(function () {
+            # Route Add Product
+            Route::get('/add-item', [ProductController::class, "addItemPage"]);
+            Route::post('/add-data', [ProductController::class, "insert"]);
+
+            # Route Delete Product
+            Route::delete('/deleteProduct/{id}', [ProductController::class, 'delete']);
+        });
+});
+
+
+Route::middleware(['GuestOnly'])->group(function () {
+    # Route untuk Login
+    Route::get('/login', [AuthController::class, 'loginPage']);
+    Route::post('/login', [AuthController::class, 'login']);
+
+    # Route untuk Register
+    Route::get('/register', [AuthController::class, 'registerPage']);
+    Route::post('/register', [AuthController::class, 'register']);
+});
+
 
