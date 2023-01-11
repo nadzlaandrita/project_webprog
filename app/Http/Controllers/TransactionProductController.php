@@ -9,10 +9,5 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionProductController extends Controller
 {
-    //
-    // public function loadTransactionHistory(){
-    //     $transaction_data = TransactionProduct::all()->where('user_id', '=', Auth::user()->id);
-
-    //     dd($transaction_data);
-    // }
+    
 }

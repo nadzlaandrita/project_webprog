@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    # MASIH BELOM ADA YG JALAN
     public function loadTransactions(){
 
         $transaction_data = Transaction::where('user_id', '=', Auth::user()->id)->get();
