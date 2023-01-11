@@ -39,7 +39,7 @@
                     @enderror
 
                     <button type="submit" class="btn btn-success btnchart d-flex">
-                        Add To cart
+                        Add to Cart
                     </button>
                     </div>
                     <a type="button" class="btn btn-danger" href="/home">Back</a>

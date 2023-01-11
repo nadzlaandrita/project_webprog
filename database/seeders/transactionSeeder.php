@@ -18,7 +18,8 @@ class transactionSeeder extends Seeder
         DB::table('transactions')->insert([
 
             [
-                'user_id' => 2
+                'user_id' => 2,
+                'total_price' => 250000
             ]
 
             

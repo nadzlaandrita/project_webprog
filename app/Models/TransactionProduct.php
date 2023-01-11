@@ -11,11 +11,18 @@ class TransactionProduct extends Model
 
     public function transaction()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->belongsTo(Transaction::class);
     }
 
     public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
+
+    protected $fillable = [
+        'transaction_id',
+        'product_id',
+        'qty',
+        'sub_price'
+    ];
 }

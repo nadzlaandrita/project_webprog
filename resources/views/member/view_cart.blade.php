@@ -10,7 +10,12 @@
 
   <div class="view-price d-flex justify-content-end m-3">
     <h5>Total Price: {{$total_price}}</h5>
-    <button type="submit" class="btn btn-primary">checkout</button>
+
+    <form action="/history" method="POST">
+      @csrf
+      <button type="submit" class="btn btn-primary">checkout</button>
+    </form>
+    
   </div>
 
     @foreach($cart_data as $item)

@@ -9,14 +9,21 @@
   </div>
     <br>
 
+  {{-- @dd($transaction_data) --}}
+
   @foreach ($transaction_data as $data)
 
     <div class="isi-transaksi bg-light ">
-      <h5>{{$data->transactionProduct->created_at}}</h5>
+      <h5>{{$data->created_at}}</h5>
       <ul>
-        <li> {{$data->transactionProduct->qty}} {{$data->product->name}} </li>
+        {{-- @dd($data->transaction_product->product) --}}
+        {{-- @dump($data->transaction_product) --}}
+        @foreach($data->transaction_product as $data_tp)
+          {{-- @dump($data->transaction_product) --}}
+          <li>  {{$data_tp->qty}} {{$data_tp->product->name}} Rp. {{$data_tp->sub_price}}</li>
+        @endforeach
       </ul>
-      <h5>Rp {{$total_price = $data->product->price * $data->transactionProduct->qty;}}</h5>
+      <h5>Total Price {{$data->total_price}}</h5>
     </div>
   @endforeach
     

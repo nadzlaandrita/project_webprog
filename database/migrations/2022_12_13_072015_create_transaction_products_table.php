@@ -21,7 +21,7 @@ class CreateTransactionProductsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->Integer('qty');
-            $table->float('total_price');
+            $table->unsignedBigInteger('sub_price');
         });
     }
 

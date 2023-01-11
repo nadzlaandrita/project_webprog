@@ -19,45 +19,25 @@ use App\Http\Controllers\UserController;
 |
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Route untuk Welcome
 Route::get('/', function (){
     return view('welcomepage');
 });
+
+# Route untuk Register
+Route::get('/register', [AuthController::class, 'registerPage']);
+Route::post('/register', [AuthController::class, 'register']);
+
+# Route untuk Login
+Route::get('/login', [AuthController::class, 'loginPage']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth'])->group(function () {
     #yang bisa dua duanya baik admin sama member
 
     # Route untuk Sign Out
     Route::get('/logout', [AuthController::class, 'logout']);
-
+    
     # Route untuk home
     Route::get("/home", [ProductController::class, 'loadProductPage']);
 
@@ -76,12 +56,15 @@ Route::middleware(['auth'])->group(function () {
 
 
         Route::middleware(['MemberOnly'])->group(function () {
+            
+
             # Route Edit Profile
             Route::get('/update-profile', [UserController::class, "loadUpdatePage"]);
             Route::patch('/update-profile', [UserController::class, "updateProfile"]);
 
             #routes untuk transaction-history
             Route::get("/history", [TransactionController::class, "loadTransactions"]);
+            Route::post('/history', [TransactionController::class, "checkout"]);
 
             # Routes View Cart
             Route::get('/cart', [CartController::class, 'loadCart']);
@@ -105,17 +88,6 @@ Route::middleware(['auth'])->group(function () {
             # Route Delete Product
             Route::delete('/deleteProduct/{id}', [ProductController::class, 'delete']);
         });
-});
-
-
-Route::middleware(['GuestOnly'])->group(function () {
-    # Route untuk Login
-    Route::get('/login', [AuthController::class, 'loginPage']);
-    Route::post('/login', [AuthController::class, 'login']);
-
-    # Route untuk Register
-    Route::get('/register', [AuthController::class, 'registerPage']);
-    Route::post('/register', [AuthController::class, 'register']);
 });
 
 
