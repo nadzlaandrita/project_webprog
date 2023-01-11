@@ -19,7 +19,7 @@
                 <h6>Size: {{$item->size}}</h6>
                 <div class="border-tambahan2"></div>
                 <h4>Quantity: {{$item->qty}}</h4>
-            
+
                 <form action="/add-cart/{{$item->id}}" method="POST">
                     @csrf
 
@@ -30,13 +30,14 @@
                         id="Quantity"
                         class="form-control"
                         placeholder="Quantity"
+                        min="1"
                     />
                     @error('inputQuantity')
                         <div class="alert alert-dismissible alert-danger">
                             {{ $message }}
                         </div>
                     @enderror
-                    
+
                     <button type="submit" class="btn btn-success btnchart d-flex">
                         Add To cart
                     </button>

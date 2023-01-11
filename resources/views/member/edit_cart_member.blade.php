@@ -30,6 +30,7 @@
               id="Quantity"
               class="form-control"
               placeholder="Quantity"
+              min="1"
             />
             <button type="submit" class="btn btn-success btnchart">
               Update Cart
