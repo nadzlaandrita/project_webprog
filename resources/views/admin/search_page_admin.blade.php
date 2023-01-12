@@ -18,23 +18,42 @@
         {{-- SHOW PRODUCT --}}
 
         <br>
+        <div class="card-group mt-3" style="height: 800px; width: 1200px; ">
+            <div class="d-flex row row-cols-2 row-cols-md-4 g-3 m-2">
+                 @foreach ($products as $product)
 
-        @foreach ($products as $product)
+                 <div class="col">
+                    <div class="card mb-3" style="height: 320px;">
+                    <div class="">
+                        <img src="{{ url($product->image) }}" class="card-img-top size-img" alt="{{$product->image}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$product->name}}</h5>
+                            <p class="card-text">Rp. {{$product->price}}</p>
+                        </div>
+                    </div>
 
-
-            <div class="card d-flex m-5 w-25">
-                <img class="card-img-top w-10" src="{{ url($product->image) }}" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">{{ $product->name }}</h5>
-                  <p class="card-text">{{$product->price}}</p>
-                  <a href="/home-member/detail-product-{{$product->id}}" class="btn btn-primary">More Details</a>
+                    <div>
+                        <a href="/home/detail-product-{{$product->id}}" class="btn btn-primary">More Detail</a>
+                    </div>
+                    </div>
                 </div>
-            </div>
         @endforeach
+        </div>
+        </div>
+
 
         <div class="m-5 d-flex justify-content-center">
             {{-- PAGINATION NAVIGATION --}}
             {{$products->withQueryString()->links() }}
         </div>
-@endsection
 
+        <style>
+            .card-group{
+                margin-left: 14%
+            }
+            .btn{
+                margin-left: 5px;
+            }
+
+        </style>
+@endsection
